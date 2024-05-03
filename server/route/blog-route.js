@@ -4,11 +4,11 @@ import {
   addNewBlog,
   updateABlog,
   deleteABlog,
-} from "../controller/blog-controller";
+} from "../controller/blog-controller.js";
 
 export const blogRouter = express.Router();
 
-blogRouter.get("./", fetchListOfBlogs);
-blogRouter.post("./add", addNewBlog);
-blogRouter.put("./update/:id", updateABlog);
-blogRouter.delete("./delete/:id", deleteABlog);
+blogRouter.get("/", fetchListOfBlogs);
+blogRouter.post("/add", addNewBlog);
+blogRouter.put("/update/:id", updateABlog);
+blogRouter.delete("/delete/:id", deleteABlog);

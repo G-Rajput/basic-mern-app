@@ -1,11 +1,5 @@
 import mongoose from "mongoose";
-import Blog from "../modal/Blog";
-import e from "express";
-
-//fetch list of blogs
-//add a new blog
-//delete a blog
-//update a blog
+import Blog from "../modal/Blog.js";
 
 export const fetchListOfBlogs = async (req, res) => {
   let blogList;
@@ -44,7 +38,7 @@ export const addNewBlog = async (req, res) => {
     session.commitTransaction();
   } catch (error) {
     return res.send(500).json({
-      message: e,
+      message: error,
     });
   }
   return res.status(200).json({ newlyCreatedBlog });
