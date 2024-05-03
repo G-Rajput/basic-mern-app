@@ -7,7 +7,7 @@ import e from "express";
 //delete a blog
 //update a blog
 
-const fetchListOfBlogs = async (req, res) => {
+export const fetchListOfBlogs = async (req, res) => {
   let blogList;
   try {
     blogList = await Blog.find();
@@ -21,7 +21,7 @@ const fetchListOfBlogs = async (req, res) => {
   return res.status(200).json({ blogList });
 };
 
-const addNewBlog = async (req, res) => {
+export const addNewBlog = async (req, res) => {
   const { title, description } = req.body;
   const currentDate = new Date();
 
@@ -50,7 +50,7 @@ const addNewBlog = async (req, res) => {
   return res.status(200).json({ newlyCreatedBlog });
 };
 
-const deleteABlog = async (req, res) => {
+export const deleteABlog = async (req, res) => {
   const id = req.params.id;
   try {
     const findCurrentBlog = await Blog.findByIdAndDelete(id);
@@ -68,7 +68,7 @@ const deleteABlog = async (req, res) => {
   }
 };
 
-const updateABlog = async (req, res) => {
+export const updateABlog = async (req, res) => {
   const id = req.params.id;
 
   const { title, description } = req.body;
