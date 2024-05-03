@@ -37,7 +37,7 @@ export const addNewBlog = async (req, res) => {
     await newlyCreatedBlog.save(session);
     session.commitTransaction();
   } catch (error) {
-    return res.send(500).json({
+    return res.status(500).json({
       message: error,
     });
   }
@@ -75,7 +75,7 @@ export const updateABlog = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.send(500).json({
+    return res.status(500).json({
       message: "Something went wrong while updating ! please try again",
     });
   }
@@ -83,5 +83,5 @@ export const updateABlog = async (req, res) => {
     return res.status(500).json({ message: "Unable to update" });
   }
 
-  return res.send(200).json({ currentBlogToUpdate });
+  return res.status(200).json({ currentBlogToUpdate });
 };

@@ -3,10 +3,12 @@ import { GlobalContext } from "../../context";
 import axios from "axios";
 import "./styles.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { blogList, setBlogList, pending, setPending } =
     useContext(GlobalContext);
+  const navigate = useNavigate();
 
   async function fetchListOfBlogs() {
     setPending(true);
@@ -20,6 +22,11 @@ const Home = () => {
       setPending(false);
       setBlogList([]);
     }
+  }
+
+  function handleEdit(getCurrentBlogItem) {
+    console.log(getCurrentBlogItem);
+    navigate("/add-blog", { state: { getCurrentBlogItem } });
   }
 
   async function handleDeleteBlog(getCurrentId) {
@@ -47,7 +54,7 @@ const Home = () => {
               <div key={blogItem._id}>
                 <p>{blogItem.title}</p>
                 <p>{blogItem.description}</p>
-                <FaEdit size={30} />
+                <FaEdit size={30} onClick={() => handleEdit(blogItem)} />
                 <FaTrash
                   size={30}
                   color="red"
