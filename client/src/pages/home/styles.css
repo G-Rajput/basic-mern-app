@@ -1,0 +1,12 @@
+.wrapper {
+  padding: 1.5rem;
+}
+.blogList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.blogList div {
+  padding: 10px;
+  border: 2px dashed #015659;
+}
